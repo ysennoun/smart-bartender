@@ -66,8 +66,12 @@ Run the script to install all services in the cloud :
     
 You will get as output :
 
-- Connection string of iot hub that you will use for installation of Iot Egde in module [`smart-bartender-iot-edge`](https://github.com/ysennoun/smart-bartender-iot-edge.git)
+- Connection string of iot hub that you will use for installation of Iot Egde in module [smart-bartender-iot-edge](https://github.com/ysennoun/smart-bartender-iot-edge.git)
 - Connection string of edge device that you will use for installation of Iot Egde in module `smart-bartender-iot-edge`
 - Container registry address to be used in module `smart-bartender-iot-edge`
 - Container registry name to be used in module `smart-bartender-iot-edge`
 - Container registry password to be used in module module `smart-bartender-iot-edge`
+
+## Web application
+
+You can visualize commands through a web application by using the project [smart-bartender-web-application](https://github.com/ysennoun/smart-bartender-web-application.git)
