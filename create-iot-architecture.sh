@@ -110,10 +110,18 @@ az acr create --resource-group $IOT_RESOURCE_GROUP --name $IOT_CONTAINER_REGISTR
 CONTAINER_REGISTRY_ADDRESS=$(az acr show --name $IOT_CONTAINER_REGISTRY --query loginServer)
 CONTAINER_REGISTRY_PASSWORD=$(az acr credential show --name $IOT_CONTAINER_REGISTRY --query "passwords[0].value")
 
+########################### Api management ############################
+echo "########################### Api management ############################"
+az group deployment create \
+ --resource-group $IOT_RESOURCE_GROUP \
+ --template-file api-management-creation-deployment.json
+
 ########################### Output ############################
 echo "########################### Output ############################"
-echo "IOT_HUB_CONNECTION_STRING="$IOT_HUB_CONNECTION_STRING
-echo "EDGE_CONNECTION_STRING="$EDGE_CONNECTION_STRING
-echo "CONTAINER_REGISTRY_ADDRESS="$CONTAINER_REGISTRY_ADDRESS
-echo "CONTAINER_REGISTRY_NAME="$IOT_CONTAINER_REGISTRY
-echo "CONTAINER_REGISTRY_PASSWORD="$CONTAINER_REGISTRY_PASSWORD
+fileName="output.txt"
+rm -f ${fileName}
+echo "IOT_HUB_CONNECTION_STRING="$IOT_HUB_CONNECTION_STRING >> ${fileName}
+echo "EDGE_CONNECTION_STRING="$EDGE_CONNECTION_STRING >> ${fileName}
+echo "CONTAINER_REGISTRY_ADDRESS="$CONTAINER_REGISTRY_ADDRESS >> ${fileName}
+echo "CONTAINER_REGISTRY_NAME="$IOT_CONTAINER_REGISTRY >> ${fileName}
+echo "CONTAINER_REGISTRY_PASSWORD="$CONTAINER_REGISTRY_PASSWORD >> ${fileName}
