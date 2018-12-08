@@ -72,6 +72,77 @@ You will get as output :
 - Container registry name to be used in module `smart-bartender-iot-edge`
 - Container registry password to be used in module module `smart-bartender-iot-edge`
 
+#### Configure REST API through Azure portal
+
+##### Configuration
+
+So far, Azure does not provide an efficient way to configure a REST API with a Function App through automatic deployment (cli, Azure Resource Manager, Teraform...)
+
+Thus, we need to use the Azure portal to configure a REST API to use a Function App. Here is how to do.
+
+First, as indicated in the image bellow, search in your Azure portal for service `api-connected-bar`. Then click on API and Function App to create an Rest Api where backend corresponds to a Function App.
+
+![Create Rest Api](img/api-management-1.png)
+
+secondly, you will get the following page where you need to click on `Browse` to search a specific Function App.
+
+![Create Rest Api](img/api-management-2.png)
+
+Thirdly, select as indicated in the image bellwo the Function App `connected-bar-function-app`.
+
+![Create Rest Api](img/api-management-3.png)
+
+Fourthly, you will return to previous page where the following fields are already filled 
+
+- Function App
+- Display name
+- Name
+- API URL suffix 
+
+Select `Unlimited` as product before to click on the button `Create`. 
+ 
+![Create Rest Api](img/api-management-4.png)
+
+Now, your REST API is created. However, you need to add the following configuration to be fully usable.
+
+As indicated in the image below, for all operations go to `policies` in `Backend` tab.
+
+![Create Rest Api](img/api-management-5.png)
+
+Click on `base` and replace :
+
+    <backend>
+        <base />
+    </backend>
+
+by
+
+    <backend>
+        <forward-request timeout="20" />
+    </backend>  
+
+Now your REST API is fully configured.
+
+##### Information
+
+Let's retrieve necessary information in order to interact with this REST API from a remote web application.   
+
+The following image enables you to get the root url of the REST API.
+
+![Create Rest Api](img/api-management-6.png)
+
+The following image enables you to get information to add in headers of a HTTP request.
+
+![Create Rest Api](img/api-management-7.png)
+
 ## Web application
 
-You can visualize commands through a web application by using the project [smart-bartender-web-application](https://github.com/ysennoun/smart-bartender-web-application.git)
+You can visualize commands through a web application by using the project [smart-bartender-web-application](https://github.com/ysennoun/smart-bartender-web-application.git).
+
+In the file `server.js`, search the following variables and replace them with information retrieved in previous section.
+
+- url
+- User-Agent    
+- Cache-Control
+- Ocp-Apim-Trace
+- Ocp-Apim-Subscription-Key
