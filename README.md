@@ -80,7 +80,7 @@ So far, Azure does not provide an efficient way to configure a REST API with a F
 
 Thus, we need to use the Azure portal to configure a REST API to use a Function App. Here is how to do.
 
-First, as indicated in the image bellow, search in your Azure portal for service `api-connected-bar`. Then click on API and Function App to create an Rest Api where backend corresponds to a Function App.
+First, as indicated in the image below, search in your Azure portal for service `api-connected-bar`. Then click on API and Function App to create an Rest Api where backend corresponds to a Function App.
 
 ![Create Rest Api](img/api-management-1.png)
 
@@ -88,7 +88,7 @@ secondly, you will get the following page where you need to click on `Browse` to
 
 ![Create Rest Api](img/api-management-2.png)
 
-Thirdly, select as indicated in the image bellwo the Function App `connected-bar-function-app`.
+Thirdly, select as indicated in the image below the Function App `connected-bar-function-app`.
 
 ![Create Rest Api](img/api-management-3.png)
 
@@ -139,7 +139,7 @@ The following image enables you to get information to add in headers of a HTTP r
 
 You can visualize commands through a web application by using the project [smart-bartender-web-application](https://github.com/ysennoun/smart-bartender-web-application.git).
 
-In the file `server.js`, search the following variables and replace them with information retrieved in previous section.
+In the file `server.js`, search the variables below and replace them with information retrieved in previous section.
 
 - url
 - User-Agent    
